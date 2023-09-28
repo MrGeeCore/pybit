@@ -22,7 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [5.6.0] - 2023-09-28
 ### Added
-- Add RSA authentication for HTTP and WebSocket (choose "Self-generated API Keys" when [creating](https://testnet.bybit.com/app/user/api-management) an API key)
+- Add RSA authentication for HTTP and WebSocket (choose "Self-generated API Keys" when [creating](https://testnet.bybit.com/app/user/api-management) an API key) (https://github.com/bybit-exchange/pybit/issues/157)
   - To use it, pass `rsa_authentication=True` along with your `api_key` and `api_secret`
     - Your `api_key` is given to you after inputting your public key (RSA) into Bybit's API management system
     - Your `api_secret` is the private key (RSA) you generate
@@ -37,11 +37,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The `HTTP` method `enable_universal_transfer_for_sub_uid()`
 
 ### Fixed
-- Improve `close_position` logic
+- Improve `close_position()` logic
 
 ## [5.5.0] - 2023-07-17
 ### Added
-- `helpers.py` which includes the `Helpers` class and the `close_position` method, which can be imported and employed like so:
+- `helpers.py` which includes the `Helpers` class and the `close_position()` method, which can be imported and employed like so:
 ```python
 from pybit.helpers import Helpers
 my_helper = Helpers(session)  # your HTTP session object (eg, from pybit.unified_trading import HTTP)
