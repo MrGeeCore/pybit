@@ -192,11 +192,33 @@ class PositionHTTP(_V5HTTPManager):
             Request results as dictionary.
 
         Additional information:
-            https://bybit-exchange.github.io/docs/v5/position/add-margin
+            https://bybit-exchange.github.io/docs/v5/position/auto-add-margin
         """
         return self._submit_request(
             method="POST",
             path=f"{self.endpoint}{Position.SET_AUTO_ADD_MARGIN}",
+            query=kwargs,
+            auth=True,
+        )
+
+    def add_margin(self, **kwargs):
+        """Turn on/off auto-add-margin for isolated margin position
+
+        Required args:
+            category (string): Product type. linear, inverse
+            symbol (string): Symbol name
+            margin (string): Add or reduce. To add, then 10; To reduce, then
+                -10. Support up to 4 decimal
+
+        Returns:
+            Request results as dictionary.
+
+        Additional information:
+            https://bybit-exchange.github.io/docs/v5/position/manual-add-margin
+        """
+        return self._submit_request(
+            method="POST",
+            path=f"{self.endpoint}{Position.ADD_OR_REDUCE_MARGIN}",
             query=kwargs,
             auth=True,
         )
